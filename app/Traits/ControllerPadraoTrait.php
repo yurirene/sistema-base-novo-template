@@ -28,7 +28,7 @@ trait ControllerPadraoTrait {
     public function create()
     {
         try {
-            return view( $this->view . '.form', $this->paramsCreate);
+            return view( $this->view . '.form', $this->paramsCreate ?? []);
         } catch (Throwable $th) {
             Log::error([
                 'erro' => $th->getMessage(),
@@ -60,7 +60,7 @@ trait ControllerPadraoTrait {
     {
         try {
             $model = $this->model::find($model);
-            $params = $this->paramsEdit;
+            $params = $this->paramsEdit ?? [];
             $params['model'] = $model;
             return view( $this->view . '.form', $params);
         } catch (Throwable $th) {

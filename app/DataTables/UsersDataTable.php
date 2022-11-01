@@ -23,10 +23,13 @@ class UsersDataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->addColumn('action', function($sql) {
-                return view('usuarios.action', [
+                return view('usuarios.actions', [
                     'route' => 'usuarios',
                     'id' => $sql->id,
                 ]);
+            })
+            ->editColumn('created_at', function($sql) {
+                return $sql->created_at->format('d/m/Y H:i:s');
             });
     }
 
@@ -55,7 +58,7 @@ class UsersDataTable extends DataTable
                     ->dom('Bfrtip')
                     ->orderBy(1)
                     ->buttons(
-                        Button::make('create')->text('<i class="fas fa-plus"></i> Novo Registro'),
+                        Button::make('create')->text('<i class="fas fa-plus"></i> Novo Registro')->addClass('btn-novo-registro'),
                     );
     }
 
