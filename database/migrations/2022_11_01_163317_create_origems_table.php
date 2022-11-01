@@ -13,8 +13,9 @@ class CreateOrigemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('origems', function (Blueprint $table) {
+        Schema::create('origens', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateOrigemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('origems');
+        Schema::dropIfExists('origens');
     }
 }

@@ -17,10 +17,14 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('cargo')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->boolean('is_admin')->default(false);
+            $table->bigInteger('departamento_id')->unsigned()->nullable();
+            $table->foreign('departamento_id')->references('id')->on('departamentos');
         });
     }
 

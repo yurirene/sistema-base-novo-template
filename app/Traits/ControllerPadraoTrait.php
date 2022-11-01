@@ -14,17 +14,14 @@ trait ControllerPadraoTrait {
     {
         $dataTable = new $this->dataTable;
         try {
-            return $dataTable->render( $this->view . '.index');
+            return $dataTable->render( $this->view . '.index', $this->paramsIndex);
         } catch (\Throwable $th) {
             Log::error([
                 'erro' => $th->getMessage(),
                 'line' => $th->getLine(),
                 'file' => $th->getFile()
             ]);
-            return redirect()->back()->with([
-                'mensagem' => 'Erro ao Realizar Operação',
-                'status' => false
-            ])->withInput();
+            return redirect()->back()->withErrors(['Erro ao realizar essa operação.'])->withInput();
         }
     }
 
@@ -46,10 +43,8 @@ trait ControllerPadraoTrait {
     {
         try {
             $this->service::store($request->all());
-            return redirect()->route( $this->view . '.index')->with([
-                'mensagem' => 'Operação Realizada com Sucesso',
-                'status' => true
-            ]);
+            return redirect()->route( $this->routeIndex . '.index')
+                ->with(['mensagem' => ['tipo' => 'success', 'mensagem' => 'Registro salvo com sucesso!']]);
         } catch (\Throwable $th) {
             Log::error([
                 'erro' => $th->getMessage(),
@@ -57,10 +52,7 @@ trait ControllerPadraoTrait {
                 'file' => $th->getFile()
             ]);
 
-            return redirect()->back()->with([
-                'mensagem' => 'Erro ao Realizar Operação',
-                'status' => false
-            ])->withInput();
+            return redirect()->back()->withErrors(['Erro ao realizar essa operação.'])->withInput();
         }
     }
 
@@ -86,10 +78,8 @@ trait ControllerPadraoTrait {
         try {
             $model = $this->model::find($model);
             $this->service::update($request->all(), $model);
-            return redirect()->route( $this->view . '.index')->with([
-                'mensagem' => 'Operação Realizada com Sucesso',
-                'status' => true
-            ]);
+            return redirect()->route( $this->routeIndex . '.index')
+                ->with(['mensagem' => ['tipo' => 'success', 'mensagem' => 'Registro atualizado com sucesso!']]);
         } catch (\Throwable $th) {
 
             Log::error([
@@ -97,10 +87,7 @@ trait ControllerPadraoTrait {
                 'line' => $th->getLine(),
                 'file' => $th->getFile()
             ]);
-            return redirect()->back()->with([
-                'mensagem' => 'Erro ao Realizar Operação',
-                'status' => false
-            ])->withInput();
+            return redirect()->back()->withErrors(['Erro ao realizar essa operação.'])->withInput();
         }
     }
 
@@ -108,10 +95,8 @@ trait ControllerPadraoTrait {
     {
         try {
             $this->service::delete($model);
-            return redirect()->route( $this->view . '.index')->with([
-                'mensagem' => 'Operação Realizada com Sucesso',
-                'status' => true
-            ]);
+            return redirect()->route( $this->routeIndex . '.index')
+                ->with(['mensagem' => ['tipo' => 'success', 'mensagem' => 'Registro excluído com sucesso!']]);
         } catch (\Throwable $th) {
 
             Log::error([
@@ -119,10 +104,7 @@ trait ControllerPadraoTrait {
                 'line' => $th->getLine(),
                 'file' => $th->getFile()
             ]);
-            return redirect()->back()->with([
-                'mensagem' => 'Erro ao Realizar Operação',
-                'status' => false
-            ])->withInput();
+            return redirect()->back()->withErrors(['Erro ao realizar essa operação.'])->withInput();
         }
     }
 }

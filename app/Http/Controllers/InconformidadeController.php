@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\InconformidadesDataTable;
 use Illuminate\Http\Request;
 
 class InconformidadeController extends Controller
@@ -18,8 +19,8 @@ class InconformidadeController extends Controller
     public function __construct() 
     {
         $this->model = Membro::class;
-        $this->service = MembroService::class;
-        $this->dataTable = MembrosDataTable::class;
+        $this->service = Incofo::class;
+        $this->dataTable = InconformidadesDataTable::class;
         $this->paramsCreate = [
             'cargos' => CargoService::getCargosForSelect()
         ];

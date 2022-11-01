@@ -13,8 +13,9 @@ class CreateTipoAcaosTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_acaos', function (Blueprint $table) {
+        Schema::create('tipo_acoes', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateTipoAcaosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_acaos');
+        Schema::dropIfExists('tipo_acoes');
     }
 }
