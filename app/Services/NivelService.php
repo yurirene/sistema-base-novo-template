@@ -9,6 +9,15 @@ use Illuminate\Support\Facades\Hash;
 class NivelService
 {
 
+    public static function getToSelect() : array
+    {
+        try {
+            return Nivel::all()->pluck('nome', 'id')->toArray();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
     public static function store(array $request) : ?Nivel
     {
         try {

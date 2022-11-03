@@ -9,6 +9,15 @@ use Illuminate\Support\Facades\Hash;
 class DepartamentoService
 {
 
+    public static function getToSelect() : array
+    {
+        try {
+            return Departamento::all()->pluck('nome', 'id')->toArray();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
     public static function store(array $request) : ?Departamento
     {
         try {

@@ -9,6 +9,15 @@ use Illuminate\Support\Facades\Hash;
 class TipoAcaoService
 {
 
+    public static function getToSelect() : array
+    {
+        try {
+            return TipoAcao::all()->pluck('nome', 'id')->toArray();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
     public static function store(array $request) : ?TipoAcao
     {
         try {

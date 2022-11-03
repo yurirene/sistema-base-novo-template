@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Nivel extends Model
+class StatusHistorico extends Model
 {
-    use HasFactory, Auditable;
-    protected $table = 'niveis';
+    use HasFactory;
+    protected $table = 'status_historicos';
     protected $guarded = ['id', 'created_at', 'updated_at'];
 }

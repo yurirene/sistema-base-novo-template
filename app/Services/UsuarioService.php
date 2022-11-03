@@ -21,7 +21,7 @@ class UsuarioService
     public static function getUsersToSelect() : array
     {
         try {
-            return User::all()->pluck('nome', 'id')->toArray();
+            return User::all()->pluck('name', 'id')->toArray();
         } catch (\Throwable $th) {
             throw $th;
         }

@@ -3,13 +3,9 @@
 namespace App\DataTables;
 
 use App\Models\Inconformidade;
-use App\Models\Membro;
-use App\Models\Membros;
+use App\Services\InconformidadeService;
 use Carbon\Carbon;
-use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
-use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
 class InconformidadesDataTable extends DataTable
@@ -25,23 +21,31 @@ class InconformidadesDataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->addColumn('action', function($sql) {
-                return view('inconformidades.action', [
+                return view('inconformidades.actions', [
                     'route' => 'inconformidades',
                     'id' => $sql->id,
                 ]);
             })
-            ->editColumn('nascimento', function($sql) {
-                return Carbon::createFromFormat('d/m/Y', $sql->nascimento)->diffInYears();
-            })
-            ->editColumn('ano_membresia', function($sql) {
-                return $sql->ano_membresia;
-            })
-            ->editColumn('cargo_id', function($sql) {
-                return $sql->cargo ? $sql->cargo->descricao : null;
-            })
             ->editColumn('created_at', function($sql) {
-                return $sql->created_at->format('d/m/Y H:i:s');
-            });
+                return Carbon::parse($sql->created_at)->format('d/m/y H:i');
+            })
+            ->editColumn('nivel_id', function($sql) {
+                return "<span class='badge badge-pill bg-light-primary me-1'>" . $sql->nivel->nome . "</span>";
+            })
+            ->editColumn('departamento_id', function($sql) {
+                return "<span class='badge badge-pill bg-light-success me-1'>" . $sql->departamento->nome . "</span>";
+            })
+            ->editColumn('tipo_acao_id', function($sql) {
+                return "<span class='badge badge-pill bg-light-info me-1'>" . $sql->tipoAcao->nome . "</span>";
+            })
+            ->editColumn('origem_id', function($sql) {
+                return "<span class='badge badge-pill bg-light-info me-1'>" . $sql->origem->nome . "</span>";
+            })
+            ->editColumn('status_id', function($sql) {
+                return InconformidadeService::getStatus($sql);
+            })
+            ->rawColumns(['nivel_id', 'departamento_id', 'tipo_acao_id', 'origem_id', 'status_id']);
+
     }
 
     /**
@@ -75,6 +79,8 @@ class InconformidadesDataTable extends DataTable
                         'className' => 'btn-novo-registro',
                         'extend' => "create"
                     ],
+                    'excel',
+                    'print'
                 ]
             ]);
     }
@@ -92,13 +98,13 @@ class InconformidadesDataTable extends DataTable
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            Column::make('nome')->title('Nome'),
-            Column::make('nascimento')->title('Idade'),
-            Column::make('sexo')->title('Sexo'),
-            Column::make('telefone')->title('Telefone'),
-            Column::make('ano_membresia')->title('Membro desde'),
-            Column::make('cargo_id')->title('Cargo'),
-            Column::make('created_at')->title('Criado em'),
+            Column::make('created_at')->title('Data'),
+            Column::make('codigo')->title('Código'),
+            Column::make('tipo_acao_id')->title('Tipo de Ação'),
+            Column::make('nivel_id')->title('Nível'),
+            Column::make('departamento_id')->title('Departameto'),
+            Column::make('origem_id')->title('Origem'),
+            Column::make('status_id')->title('Status'),
         ];
     }
 
@@ -109,6 +115,6 @@ class InconformidadesDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Membros_' . date('YmdHis');
+        return 'Inconformidades_' . date('YmdHis');
     }
 }

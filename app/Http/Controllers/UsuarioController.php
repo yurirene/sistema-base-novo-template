@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DataTables\UsersDataTable;
 use App\Models\User;
+use App\Services\DepartamentoService;
 use App\Services\UsuarioService;
 use App\Traits\ControllerPadraoTrait;
 use Illuminate\Http\Request;
@@ -30,10 +31,12 @@ class UsuarioController extends Controller
             'titulo' => 'Usuários'
         ];
         $this->paramsCreate = [
-            'titulo' => 'Usuários'
+            'titulo' => 'Usuários',
+            'departamentos' => DepartamentoService::getToSelect()
         ];
         $this->paramsEdit = [
-            'titulo' => 'Usuários'
+            'titulo' => 'Usuários',
+            'departamentos' => DepartamentoService::getToSelect()
         ];
         $this->routeIndex = 'usuarios';
         $this->view = 'usuarios';

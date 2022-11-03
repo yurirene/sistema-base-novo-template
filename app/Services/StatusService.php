@@ -5,10 +5,10 @@ namespace App\Services;
 use App\Models\Status;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Hash;
+use Throwable;
 
 class StatusService
 {
-
     public static function store(array $request) : ?Status
     {
         try {

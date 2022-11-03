@@ -3,7 +3,7 @@
         <div class="sidebar-header">
             <div class="d-flex justify-content-between">
                 <div class="logo">
-                    <a href="index.html"><img src="/assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+                    <a href="{{ route('home') }}"><img src="/img/logo_empresa.png" alt="Logo" srcset=""></a>
                 </div>
                 <div class="toggler">
                     <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -22,7 +22,7 @@
                 </li>
 
                 <li class="sidebar-item {{ request()->is('nao-conformidade*') ? 'active' : '' }}">
-                    <a href="#" class='sidebar-link'>
+                    <a href="{{ route('inconformidades.index') }}" class='sidebar-link'>
                         <i class="bi bi-exclamation-octagon"></i>
                         <span>Não Conformidades</span>
                     </a>
@@ -44,17 +44,11 @@
                         <li class="submenu-item {{ request()->is('parametros/departamentos') ? 'active' : '' }}">
                             <a href="{{ route('departamentos.index') }}">Departamentos</a>
                         </li>
-                        <li class="submenu-item {{ request()->is('parametros/etapas') ? 'active' : '' }}">
-                            <a href="{{ route('etapas.index') }}">Etapas</a>
-                        </li>
                         <li class="submenu-item {{ request()->is('parametros/niveis') ? 'active' : '' }}">
                             <a href="{{ route('niveis.index') }}">Níveis</a>
                         </li>
                         <li class="submenu-item {{ request()->is('parametros/origens') ? 'active' : '' }}">
                             <a href="{{ route('origens.index') }}">Origem</a>
-                        </li>
-                        <li class="submenu-item {{ request()->is('parametros/status') ? 'active' : '' }}">
-                            <a href="{{ route('status.index') }}">Status</a>
                         </li>
                         <li class="submenu-item {{ request()->is('parametros/tipo-acao') ? 'active' : '' }}">
                             <a href="{{ route('tipo-acao.index') }}">Tipo de Ação</a>

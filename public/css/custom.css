@@ -44,7 +44,13 @@ table.dataTable {
 .user-dropdown:focus {
     font-weight: bolder;
 }
-
+#auth #auth-left .auth-logo {
+    margin-bottom: 2rem;
+}
+.logo img {
+    min-width: 70px;
+    min-height: 70px;
+}
 @media (max-width: 48em) {
     .btn-user-name{
         display: none;
@@ -326,4 +332,17 @@ ul.timeline > li:before {
         align-items: center!important;
         display: flex!important;
     }
+}
+
+
+.custom-tab > .nav-item{
+    margin: 5px;
+}
+.custom-tab > .nav-item button{
+    background-color: #f2f7ff;
+}
+.nav-tabs .nav-link.active {
+    background-color: #435ebe;
+    color: white;
+    border: none;
 }

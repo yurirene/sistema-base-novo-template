@@ -14,7 +14,7 @@ trait ControllerPadraoTrait {
     {
         $dataTable = new $this->dataTable;
         try {
-            return $dataTable->render( $this->view . '.index', $this->paramsIndex);
+            return $dataTable->render( $this->view . '.index', $this->paramsIndex ?? []);
         } catch (\Throwable $th) {
             Log::error([
                 'erro' => $th->getMessage(),

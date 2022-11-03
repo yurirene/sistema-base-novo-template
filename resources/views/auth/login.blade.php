@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Sistema de Gestão de Não Confirmdades - Login') }}</title>
     <link rel="shortcut icon" href="/assets/images/webvendas/webvendas_logo_tab.png" type="image/x-icon"/>
     <link rel="shortcut icon" href="/assets/images/webvendas/webvendas_logo_tab.png" type="image/png"/>
 
@@ -20,7 +20,7 @@
                 <div id="auth-left">
                     <div class="auth-logo d-flex">
                         <a class="text-center" href="/">
-                            <img class="w-75 h-100" src="/assets/images/webvendas/web_vendas_crm.png" alt="Logo"/>
+                            <img class="w-75 h-100" src="/img/logo_empresa.png" alt="Logo"/>
                         </a>
                     </div>
                     <p class="auth-subtitle mb-4 text-center">
@@ -70,7 +70,7 @@
             </div>
             <div class="col-lg-7">
                 <div class="auth-right d-flex justify-content-center align-items-start">
-                    <img class="w-75 pt-5" src="/assets/images/webvendas/web_vendas_logo.png" alt="">
+                    <img class="w-75 pt-5" src="/img/logo_branca.png" alt="">
                 </div>
             </div>
         </div>

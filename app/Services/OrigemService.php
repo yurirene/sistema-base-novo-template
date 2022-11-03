@@ -9,6 +9,15 @@ use Illuminate\Support\Facades\Hash;
 class OrigemService
 {
 
+    public static function getToSelect() : array
+    {
+        try {
+            return Origem::all()->pluck('nome', 'id')->toArray();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
     public static function store(array $request) : ?Origem
     {
         try {
