@@ -88,5 +88,5 @@
     </div>
 </div>
 <button type="submit" class="btn btn-primary">{{ isset($model) ? 'Atualizar' : 'Cadastrar' }}</button>
-
+<a href="{{ route('inconformidades.index') }}" class="btn btn-secondary" >Voltar </a>
 {!! Form::close() !!}

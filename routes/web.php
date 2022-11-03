@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\AnaliseCausaController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\EtapaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InconformidadeController;
 use App\Http\Controllers\NivelController;
 use App\Http\Controllers\OrigemController;
+use App\Http\Controllers\PlanoAcaoController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TipoAcaoController;
 use App\Http\Controllers\UsuarioController;
@@ -27,7 +29,15 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+   
     Route::resource('nao-conformidade', InconformidadeController::class)->parameter('nao-conformidade', 'model')->names('inconformidades')->except(['destroy']); 
+    Route::get('/nao-conformidade-delete/{model}', [InconformidadeController::class, 'delete'])->name('inconformidades.delete');
+
+    Route::resource('analise-causa', AnaliseCausaController::class)->parameter('analise-causa', 'model')->names('analise-causa')->except(['destroy']); 
+    Route::get('/analise-causa-delete/{model}', [AnaliseCausaController::class, 'delete'])->name('analise-causa.delete');
+
+    Route::resource('plano-acao', PlanoAcaoController::class)->parameter('plano-acao', 'model')->names('plano-acao')->except(['destroy']); 
+    Route::get('/plano-acao-delete/{model}', [PlanoAcaoController::class, 'delete'])->name('plano-acao.delete');
 
     Route::group(['prefix' => 'parametros'], function() {
         Route::resource('departamentos', DepartamentoController::class)->parameter('departamentos', 'model')->names('departamentos')->except(['destroy']);

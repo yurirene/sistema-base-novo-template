@@ -12,6 +12,7 @@ use App\Services\TipoAcaoService;
 use App\Services\UsuarioService;
 use App\Traits\ControllerPadraoTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class InconformidadeController extends Controller
 {
@@ -53,4 +54,42 @@ class InconformidadeController extends Controller
         $this->view = 'inconformidades';
         $this->routeIndex = 'inconformidades';
     }
+
+
+
+    public function store(Request $request)
+    {
+        try {
+            $this->service::store($request->all());
+            return redirect()->route( $this->routeIndex . '.edit', $model->id)
+                ->with(['mensagem' => ['tipo' => 'success', 'mensagem' => 'Registro salvo com sucesso!']]);
+        } catch (\Throwable $th) {
+            Log::error([
+                'erro' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getFile()
+            ]);
+
+            return redirect()->back()->withErrors(['Erro ao realizar essa operação.'])->withInput();
+        }
+    }
+
+    public function update($model, Request $request)
+    {
+        try {
+            $model = $this->model::find($model);
+            $this->service::update($request->all(), $model);
+            return redirect()->route( $this->routeIndex . '.edit', $model->id)
+                ->with(['mensagem' => ['tipo' => 'success', 'mensagem' => 'Registro atualizado com sucesso!']]);
+        } catch (\Throwable $th) {
+
+            Log::error([
+                'erro' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getFile()
+            ]);
+            return redirect()->back()->withErrors(['Erro ao realizar essa operação.'])->withInput();
+        }
+    }
+
 }

@@ -3,7 +3,7 @@
         Ações
     </button>
     <div class="dropdown-menu">       
-        <a class="dropdown-item" href="{{ route('usuarios.edit', $id) }}">Editar</a>
-        <button class="dropdown-item" onclick="deleteRegistro('{{ route('usuarios.delete', $id) }}')">Excluir</button>
+        <a class="dropdown-item" href="{{ route('inconformidades.edit', $id) }}">Editar</a>
+        <button class="dropdown-item" onclick="deleteRegistro('{{ route('inconformidades.delete', $id) }}')">Excluir</button>
     </div>
 </div>

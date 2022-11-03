@@ -44,6 +44,9 @@ class InconformidadesDataTable extends DataTable
             ->editColumn('status_id', function($sql) {
                 return InconformidadeService::getStatus($sql);
             })
+            ->editColumn('descricao', function($sql) {
+                return substr($sql->descricao, 0, 60) . '...';;
+            })
             ->rawColumns(['nivel_id', 'departamento_id', 'tipo_acao_id', 'origem_id', 'status_id']);
 
     }
@@ -104,6 +107,7 @@ class InconformidadesDataTable extends DataTable
             Column::make('nivel_id')->title('Nível'),
             Column::make('departamento_id')->title('Departameto'),
             Column::make('origem_id')->title('Origem'),
+            Column::make('descricao')->title('Descrição'),
             Column::make('status_id')->title('Status'),
         ];
     }

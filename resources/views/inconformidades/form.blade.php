@@ -43,7 +43,11 @@
                             <div class="tab-pane fade show active" id="informacoes-pane" role="tabpanel" aria-labelledby="informacoes" tabindex="0">
                                 @include('inconformidades.tabs.informacoes')
                             </div>
-                            <div class="tab-pane fade" id="tratativa-pane" role="tabpanel" aria-labelledby="tratativa" tabindex="0">...</div>
+                            <div class="tab-pane fade" id="tratativa-pane" role="tabpanel" aria-labelledby="tratativa" tabindex="0">
+                                @if(isset($model))
+                                    @include('inconformidades.tabs.tratativas')
+                                @endif
+                            </div>
                             <div class="tab-pane fade" id="avaliaca-eficacia-pane" role="tabpanel" aria-labelledby="avaliaca-eficacia" tabindex="0">...</div>
                             <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div>
                         </div>

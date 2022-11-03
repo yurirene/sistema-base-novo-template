@@ -50,5 +50,25 @@ class Inconformidade extends Model
     {
         return $this->belongsTo(Status::class, 'status_id');
     }
+
+    public function responsavel()
+    {
+        return $this->belongsTo(User::class, 'responsavel');
+    }
+
+    public function criadoPor()
+    {
+        return $this->belongsTo(User::class, 'criado_por');
+    }
     
+    public function analiseCausa()
+    {
+        return $this->hasOne(AnaliseCausa::class, 'inconformidade_id');
+    }
+
+    public function planoAcao()
+    {
+        return $this->hasOne(PlanoAcao::class, 'inconformidade_id');
+    }
+
 }
