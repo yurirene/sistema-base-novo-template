@@ -1,4 +1,4 @@
-<p align="center"><img src="[https://raw.githubusercontent.com/yurirene/sistema-nao-conformidade/master/public/img/logo_completa.png](https://snc.meuapp.net.br/public/img/logo_completa.png)" width="400"></p>
+<p align="center"><img src="https://snc.meuapp.net.br/public/img/logo_completa.png" width="400"></p>
 
 # Sistema de Gestão de Não Conformidades
 Sistema desenvolvido para registrar não conformidades com suas causas e planos de ação.
