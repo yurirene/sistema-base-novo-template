@@ -1,5 +1,7 @@
 @extends('layout.template')
-
+@section('title')
+    Início
+@endsection
 @section('content')
 <section class="row">
     <div class="col-12 col-lg-12">

@@ -16,7 +16,7 @@ class CreateInconformidadesTable extends Migration
         Schema::create('inconformidades', function (Blueprint $table) {
             $table->id();
             $table->string('codigo');
-            $table->string('descricao');
+            $table->text('descricao');
             $table->string('evidencias')->nullable();
             $table->string('contrariedade')->nullable();
             $table->date('previsao_retorno')->nullable();

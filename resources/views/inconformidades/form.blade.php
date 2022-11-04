@@ -14,7 +14,7 @@
                     <div class="card-body">
                         <ul class="nav nav-tabs custom-tab" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" 
+                                <button class="nav-link {{ !session()->has('aba') || session()->get('aba') == 'informacoes' ? ' active' : '' }}" 
                                     id="informacoes" data-bs-toggle="tab" 
                                     data-bs-target="#informacoes-pane" type="button" 
                                     role="tab" aria-controls="informacoes-pane" 
@@ -23,7 +23,7 @@
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="tratativa" 
+                                <button class="nav-link {{ session()->has('aba') && session()->get('aba') == 'tratativa' ? ' active' : '' }}" id="tratativa" 
                                     data-bs-toggle="tab" data-bs-target="#tratativa-pane" 
                                     type="button" role="tab" 
                                     aria-controls="tratativa-pane" aria-selected="false">
@@ -40,10 +40,10 @@
                             </li>
                         </ul>
                         <div class="tab-content mt-5" id="myTabContent">
-                            <div class="tab-pane fade show active" id="informacoes-pane" role="tabpanel" aria-labelledby="informacoes" tabindex="0">
+                            <div class="tab-pane fade {{ !session()->has('aba') || session()->get('aba') == 'informacoes' ? 'show active' : '' }}" id="informacoes-pane" role="tabpanel" aria-labelledby="informacoes" tabindex="0">
                                 @include('inconformidades.tabs.informacoes')
                             </div>
-                            <div class="tab-pane fade" id="tratativa-pane" role="tabpanel" aria-labelledby="tratativa" tabindex="0">
+                            <div class="tab-pane fade {{ session()->has('aba') && session()->get('aba') == 'tratativa' ? 'show active' : '' }}" id="tratativa-pane" role="tabpanel" aria-labelledby="tratativa" tabindex="0">
                                 @if(isset($model))
                                     @include('inconformidades.tabs.tratativas')
                                 @endif

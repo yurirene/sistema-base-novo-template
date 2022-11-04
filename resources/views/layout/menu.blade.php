@@ -56,11 +56,35 @@
                         <li class="submenu-item {{ request()->is('parametros/usuarios') ? 'active' : '' }}">
                             <a href="{{ route('usuarios.index') }}">Usuários</a>
                         </li>
-                        
                     </ul>
+                </li>
+                
+                <li class="sidebar-item {{ request()->is('relatorios*') ? 'active' : '' }}">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-lock"></i>
+                        <span>Trocar Senha</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{ request()->is('relatorios*') ? 'active' : '' }}">
+                    {!! Form::open(['method' => 'POST', 'route' => 'logout', 'class' => 'form-horizontal', 'id' => 'logout-form']) !!}
+                    <a href="#" id="logout" class='sidebar-link'>
+                        <i class="bi bi-door-open-fill"></i>
+                        <span>Logout</span>
+                    </a>
+                    {!! Form::close() !!}
+                    
                 </li>
             </ul>
         </div>
         <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
     </div>
 </div>
+
+@push('js')
+
+<script>
+    $('#logout').on('click', function() {
+        $('#logout-form').submit();
+    });
+</script>
+@endpush
