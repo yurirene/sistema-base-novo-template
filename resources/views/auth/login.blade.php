@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Sistema de Gestão de Não Confirmdades - Login') }}</title>
+    <title>Sistema Teste</title>
     <link rel="shortcut icon" href="/assets/images/webvendas/webvendas_logo_tab.png" type="image/x-icon"/>
     <link rel="shortcut icon" href="/assets/images/webvendas/webvendas_logo_tab.png" type="image/png"/>
 
@@ -70,7 +70,7 @@
             </div>
             <div class="col-lg-7">
                 <div class="auth-right d-flex justify-content-center align-items-start">
-                    <img class="w-75 pt-5" src="/img/logo_branca.png" alt="">
+                    <img class="w-75 pt-5" src="/img/logo_teste.png" alt="">
                 </div>
             </div>
         </div>

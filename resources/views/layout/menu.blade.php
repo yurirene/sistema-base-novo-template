@@ -21,44 +21,35 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item {{ request()->is('nao-conformidade*') ? 'active' : '' }}">
-                    <a href="{{ route('inconformidades.index') }}" class='sidebar-link'>
-                        <i class="bi bi-exclamation-octagon"></i>
-                        <span>Não Conformidades</span>
+                <li class="sidebar-item {{ request()->is('lojas*') ? 'active' : '' }}">
+                    <a href="{{ route('lojas.index') }}" class='sidebar-link'>
+                        <i class="bi bi-bag"></i>
+                        <span>Lojas</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item {{ request()->is('clientes*') ? 'active' : '' }}">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-person-square"></i>
+                        <span>Clientes</span>
+                    </a>
+                </li>
+
+                
+                <li class="sidebar-item {{ request()->is('usuarios*') ? 'active' : '' }}">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-people"></i>
+                        <span>Usuários</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item {{ request()->is('relatorios*') ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
-                        <i class="bi bi-graph-down"></i>
+                        <i class="bi bi-bar-chart"></i>
                         <span>Relatórios</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item  has-sub {{ request()->is('parametros*') ? 'active' : '' }}">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-stack"></i>
-                        <span>Parâmetros</span>
-                    </a>
-                    <ul class="submenu {{ request()->is('parametros*') ? 'active' : '' }}">
-                        <li class="submenu-item {{ request()->is('parametros/departamentos') ? 'active' : '' }}">
-                            <a href="{{ route('departamentos.index') }}">Departamentos</a>
-                        </li>
-                        <li class="submenu-item {{ request()->is('parametros/niveis') ? 'active' : '' }}">
-                            <a href="{{ route('niveis.index') }}">Níveis</a>
-                        </li>
-                        <li class="submenu-item {{ request()->is('parametros/origens') ? 'active' : '' }}">
-                            <a href="{{ route('origens.index') }}">Origem</a>
-                        </li>
-                        <li class="submenu-item {{ request()->is('parametros/tipo-acao') ? 'active' : '' }}">
-                            <a href="{{ route('tipo-acao.index') }}">Tipo de Ação</a>
-                        </li>
-                        <li class="submenu-item {{ request()->is('parametros/usuarios') ? 'active' : '' }}">
-                            <a href="{{ route('usuarios.index') }}">Usuários</a>
-                        </li>
-                    </ul>
-                </li>
-                
                 <li class="sidebar-item {{ request()->is('relatorios*') ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-lock"></i>

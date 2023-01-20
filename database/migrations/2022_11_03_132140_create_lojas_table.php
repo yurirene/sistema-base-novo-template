@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrigemsTable extends Migration
+class CreateLojasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateOrigemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('origens', function (Blueprint $table) {
+        Schema::create('lojas', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
+            $table->decimal('desconto', )->nullable();
+            $table->string('logo')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -27,6 +30,6 @@ class CreateOrigemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('origens');
+        Schema::dropIfExists('lojas');
     }
 }

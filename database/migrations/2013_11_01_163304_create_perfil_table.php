@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTipoAcaosTable extends Migration
+class CreatePerfilTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateTipoAcaosTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_acoes', function (Blueprint $table) {
+        Schema::create('perfis', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateTipoAcaosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_acoes');
+        Schema::dropIfExists('perfis');
     }
 }

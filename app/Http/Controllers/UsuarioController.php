@@ -5,40 +5,43 @@ namespace App\Http\Controllers;
 use App\DataTables\UsersDataTable;
 use App\Models\User;
 use App\Services\DepartamentoService;
+use App\Services\PerfilService;
 use App\Services\UsuarioService;
 use App\Traits\ControllerPadraoTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class UsuarioController extends Controller
 {
-    use ControllerPadraoTrait;
-
-    protected $model;
-    protected $service;
-    protected $dataTable;
-    protected $paramsCreate;
-    protected $paramsEdit;
-    protected $paramsIndex;
-    protected $view;
-    protected $routeIndex;
-
-    public function __construct() 
+    public function index()
     {
-        $this->model = User::class;
-        $this->service = UsuarioService::class;
-        $this->dataTable = UsersDataTable::class;
-        $this->paramsIndex = [
-            'titulo' => 'Usuários'
-        ];
-        $this->paramsCreate = [
-            'titulo' => 'Usuários',
-            'departamentos' => DepartamentoService::getToSelect()
-        ];
-        $this->paramsEdit = [
-            'titulo' => 'Usuários',
-            'departamentos' => DepartamentoService::getToSelect()
-        ];
-        $this->routeIndex = 'usuarios';
-        $this->view = 'usuarios';
+        try {
+            
+        } catch (\Throwable $th) {
+            Log::error([
+                'erro' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getFile()
+            ]);
+
+            return redirect()->back()->withErrors(['Erro ao realizar essa operação.'])->withInput();
+        }
+    }
+
+    public function store(Request $request)
+    {
+        try {
+            UsuarioService::store($request->all());
+            return redirect()->route('usuarios.index')
+                ->with(['mensagem' => ['tipo' => 'success', 'mensagem' => 'Registro salvo com sucesso!']]);
+        } catch (\Throwable $th) {
+            Log::error([
+                'erro' => $th->getMessage(),
+                'line' => $th->getLine(),
+                'file' => $th->getFile()
+            ]);
+
+            return redirect()->back()->withErrors(['Erro ao realizar essa operação.'])->withInput();
+        }
     }
 }

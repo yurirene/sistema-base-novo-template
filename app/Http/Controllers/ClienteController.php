@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\NiveisDataTable;
-use App\Models\Nivel;
-use App\Services\NivelService;
+use App\DataTables\DepartamentoDataTable;
+use App\Models\Departamento;
+use App\Services\DepartamentoService;
 use App\Traits\ControllerPadraoTrait;
 use Illuminate\Http\Request;
 
-class NivelController extends Controller
+class ClienteController extends Controller
 {
     use ControllerPadraoTrait;
 
@@ -23,14 +23,14 @@ class NivelController extends Controller
 
     public function __construct() 
     {
-        $this->model = Nivel::class;
-        $this->service = NivelService::class;
-        $this->dataTable = NiveisDataTable::class;
+        $this->model = Departamento::class;
+        $this->service = DepartamentoService::class;
+        $this->dataTable = DepartamentoDataTable::class;
         $this->paramsIndex = [
-            'route' => route('niveis.store'),
-            'titulo' => 'Niveis'
+            'route' => route('departamentos.store'),
+            'titulo' => 'Departamentos'
         ];
-        $this->routeIndex = 'niveis';
+        $this->routeIndex = 'departamentos';
         $this->view = 'parametros';
     }
 }

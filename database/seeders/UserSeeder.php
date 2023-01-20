@@ -20,7 +20,8 @@ class UserSeeder extends Seeder
                 'name' => 'Yuri',
                 'email' => 'yurirene@gmail.com',
                 'password' => Hash::make('123'),
-                'is_admin' => true
+                'is_admin' => true,
+                'perfil_id' => 1
             ]);
         } catch (\Throwable $th) {
             dd($th->getMessage());
